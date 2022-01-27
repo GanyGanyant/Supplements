@@ -1,0 +1,13 @@
+name: Supplements
+version: '${project.version}'
+main: me.ganyganyant.supplements.Supplements
+api-version: 1.18
+authors: [ Gany_Ganyant ]
+description: Just a simple plugin
+commands:
+  kys:
+    description: Kill Yourself
+    usage: /<command>
+  discord:
+    description: Link na náš discord server
+    usage: /<command>
