@@ -1,5 +1,6 @@
 package me.ganyganyant.supplements.commands;
 
+import me.ganyganyant.supplements.Supplements;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -12,17 +13,37 @@ public class Discord implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 
+        Supplements plugin = Supplements.getPlugin();
+
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
-            TextComponent message = new TextComponent( ChatColor.GOLD + " ZDE" );
-            TextComponent msg = new TextComponent(ChatColor.DARK_AQUA + "Připoj se na náš discord server:");
-            message.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, "https://discord.gg/3Qm9a8Te" ) );
-            msg.addExtra(message);
+            String Text1 = plugin.getConfig().getString("discordText1");
+            String Text2 = plugin.getConfig().getString("discordLinkText");
+            String Text3 = plugin.getConfig().getString("discordText2");
 
-            p.sendMessage("------------------------------------");
-            p.spigot().sendMessage(msg);
-            p.sendMessage("------------------------------------");
+            String Link = plugin.getConfig().getString("discordLinkAddress");
+
+            assert Text1 != null;
+            TextComponent msg1 = new TextComponent(ChatColor.translateAlternateColorCodes('&',Text1));
+            assert Text2 != null;
+            TextComponent msg2 = new TextComponent(ChatColor.translateAlternateColorCodes('&',Text2));
+            assert Text3 != null;
+            TextComponent msg3 = new TextComponent(ChatColor.translateAlternateColorCodes('&',Text3));
+            msg2.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, Link ) );
+            msg1.addExtra(msg2);
+            msg1.addExtra(msg3);
+
+            String Line1 = plugin.getConfig().getString("discordLine1");
+            String Line2 = plugin.getConfig().getString("discordLine2");
+
+            if (Line1 != null) {
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&',Line1));
+            }
+            p.spigot().sendMessage(msg1);
+            if (Line2 != null) {
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&',Line2));
+            }
         }
 
         return true;

@@ -1,0 +1,48 @@
+# this is config file for the Supplements plugin
+
+# settings for discord command
+# 1st line
+discordLine1: "------------------------------------"
+# regular text on 2nd line
+discordText1: "&3Join our discord server:"
+# clickable text on 2nd line
+discordLinkText: "&6 CLICK ME"
+# discord url
+discordLinkAddress: "https://discord.gg/"
+# regular text on 2nd line
+discordText2: "&3 <<"
+# last line
+discordLine2: "------------------------------------"
+
+# Join and Leave messages
+# enable different messages for new players
+uniqueFirstJoin: true
+# message for new players
+uniqueJoin: "&6{PLAYER} &eis new to the server, say hi!"
+# player join message
+playerJoin: "&6{PLAYER} &ejoined the server."
+# player leave message
+playerLeft: "&6{PLAYER} &eleft the server."
+# use {PLAYER} to display players name
+
+# Teleport to spawn on join
+# Teleport players to spawn when they join the server
+teleportOnJoin: false
+# Teleport new players to spawn when they join for the first time
+# (If teleportOnJoin: true, teleportNewPlayers will be also true)
+teleportNewPlayers: true
+
+# Teleport to spawn on death
+# Teleport players to spawn always when they die
+always: false
+# Teleport players to spawn when they don't have a bed or respawn anchor
+# (If always: true, noRespawnPoint will be also true)
+noRespawnPoint: true
+
+# Spawn command messages
+# set spawn command
+setSpawn: "&aSpawn set successfully."
+# teleport to spawn
+teleportedToSpawn: "&aTeleported to spawn."
+# couldn't teleport to spawn because spawn does not exist
+spawnNotExist: "&cSpawn does not exist"

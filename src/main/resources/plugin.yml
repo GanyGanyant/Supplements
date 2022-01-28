@@ -11,3 +11,10 @@ commands:
   discord:
     description: Link na náš discord server
     usage: /<command>
+  setspawn:
+    description: Set world spawn
+    usage: /<command>
+    permission: op
+  spawn:
+    description: Teleport to world spawn
+    usage: /<command>
