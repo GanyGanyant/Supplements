@@ -9,12 +9,21 @@ commands:
     description: Kill Yourself
     usage: /<command>
   discord:
-    description: Link na náš discord server
+    description: Discord URL
     usage: /<command>
   setspawn:
-    description: Set world spawn
+    description: Set world spawn.
     usage: /<command>
     permission: op
   spawn:
-    description: Teleport to world spawn
+    description: Teleport to world spawn.
     usage: /<command>
+  sethome:
+    description: Set a home.
+    usage: /<command> {home name}
+  home:
+    description: Teleport to your home.
+    usage: /<command> {home name}
+  delhome:
+    description: Delete your home.
+    usage: /<command> {home name}
