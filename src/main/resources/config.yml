@@ -39,7 +39,7 @@ always: false
 # (If always: true, noRespawnPoint will be also true)
 noRespawnPoint: true
 
-# home command
+# sethome
 # number of homes per player
 homes: 1
 # player has reached max number of homes
@@ -48,12 +48,14 @@ maxHomes: "&cYou have reached the max amount of homes!"
 missingHomeName: "&cUse /sethome <homeName> to set your home."
 # player set home successfully
 homeSet: "&aHome set successfully."
+# home
 # player does not have a home
 noHomes: "&cYou must set your home first."
 # player gets teleported to home
 tpHome: "&aSuccessfully teleported to your home."
 # requested home not found
 homeNotFound: "&cRequested home could not be found."
+# delhome
 # home deleted
 homeRemoved: "&aHome &cDELETED&a successfully."
 # player tried deleting while he didn't have one
@@ -62,6 +64,12 @@ noHomeToRemove: "&cYou have no homes to remove!"
 specifyHomeToRemove: "&cYou have to specify home to delete!"
 # player tried to delete non-existing home
 homeToRemoveNotFound: "&cHome you want to delete does not exist!"
+# homes (displays a list of homes)
+# player does not have a home
+zeroHomes: "&cYou have no homes."
+# display homes message
+listHomes: "&aHomes &2({NUM}): &a{LIST}"
+# use {NUM} to display the number of homes and {LIST} to list all home names
 
 # Spawn command messages
 # set spawn command

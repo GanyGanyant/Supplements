@@ -27,3 +27,6 @@ commands:
   delhome:
     description: Delete your home.
     usage: /<command> {home name}
+  homes:
+    description: Show list of homes.
+    usage: /<command>

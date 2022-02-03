@@ -1,7 +1,6 @@
 package me.ganyganyant.supplements.files;
 
 import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.ganyganyant.supplements.Supplements;
 import org.bukkit.Location;
@@ -20,8 +19,8 @@ public class HomeData {
 
     public static class home {
 
-        public String name;
-        public Location location;
+        private final String name;
+        private Location location;
 
         public home(String Name, Location loc){
             name = Name;
@@ -30,7 +29,7 @@ public class HomeData {
         public boolean nameEquals(String homeName){
             return name.equalsIgnoreCase(homeName);
         }
-
+        public String getName() { return name; }
         public Location getLocation() {
             return location;
         }
@@ -101,6 +100,16 @@ public class HomeData {
                 return 0;
             }
             return homes.size();
+        }
+        public String listHomes() {
+            StringBuilder list = new StringBuilder();
+            for (HomeData.home home : homes) {
+                if (list.length() != 0) {
+                    list.append(", ");
+                }
+                list.append(home.getName());
+            }
+            return list.toString();
         }
     }
 

@@ -43,6 +43,7 @@ public final class Supplements extends JavaPlugin {
         getCommand("home").setExecutor(new Home());
         getCommand("sethome").setExecutor(new Home());
         getCommand("delhome").setExecutor(new Home());
+        getCommand("homes").setExecutor(new Home());
 
     }
 

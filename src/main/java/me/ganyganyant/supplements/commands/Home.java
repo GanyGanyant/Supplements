@@ -25,66 +25,84 @@ public class Home implements CommandExecutor {
 
             if (command.getName().equalsIgnoreCase("sethome")) {
                 if (player.numberOfHomes() >= homes){
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("maxHomes"))));
+                    sendFromConfig(p,"maxHomes");
                     return true;
                 }
                 if (args.length == 0 && player.numberOfHomes() != 0){
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("missingHomeName"))));
+                    sendFromConfig(p,"missingHomeName");
                     return true;
                 }
                 if (args.length == 0 && player.numberOfHomes() == 0) {
                     player.addHome("home", p.getLocation());
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("homeSet"))));
+                    sendFromConfig(p,"homeSet");
                     return true;
                 }
                 player.addHome(args[0], p.getLocation());
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("homeSet"))));
+                sendFromConfig(p,"homeSet");
                 return true;
 
             } else if (command.getName().equalsIgnoreCase("home")) {
 
                 if (player.numberOfHomes() == 0){
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("noHomes"))));
+                    sendFromConfig(p,"noHomes");
                     return true;
                 }
                 if (args.length == 0){
                     p.teleport(player.firstHome());
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("tpHome"))));
+                    sendFromConfig(p,"tpHome");
                     return true;
                 }
                 if (player.homeByName(args[0]) != null){
                     p.teleport(player.homeByName(args[0]));
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("tpHome"))));
+                    sendFromConfig(p,"tpHome");
                     return true;
                 }
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("homeNotFound"))));
+                sendFromConfig(p,"homeNotFound");
                 return true;
 
             } else if (command.getName().equalsIgnoreCase("delhome")) {
                 if (player.numberOfHomes() == 0) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("noHomeToRemove"))));
+                    sendFromConfig(p,"noHomeToRemove");
                     return true;
                 }
                 if (player.numberOfHomes() > 1 && args.length == 0){
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("specifyHomeToRemove"))));
+                    sendFromConfig(p,"specifyHomeToRemove");
                     return true;
                 }
                 if (player.numberOfHomes() == 1 && args.length == 0){
                     player.removeFirstHome();
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("homeRemoved"))));
+                    sendFromConfig(p,"homeRemoved");
                     return true;
                 }
                 if (player.homeByName(args[0]) != null){
                     player.removeHome(args[0]);
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("homeRemoved"))));
+                    sendFromConfig(p,"homeRemoved");
                     return true;
                 }
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&',Objects.requireNonNull(plugin.getConfig().getString("homeToRemoveNotFound"))));
+                sendFromConfig(p,"homeToRemoveNotFound");
                 return true;
 
-
+            } else if (command.getName().equalsIgnoreCase("homes")) {
+                if (player.numberOfHomes() != 0) {
+                    p.sendMessage(
+                    ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
+                            Objects.requireNonNull(    // check if not null
+                                    plugin.getConfig().getString("listHomes")   // get message from config
+                            ).replace("{NUM}", String.valueOf(player.numberOfHomes())  // changes {NUM} string to number of homes
+                            ).replace("{LIST}", player.listHomes())));   // change {LIST} string to list of player homes
+                    return true;
+                }
+                sendFromConfig(p, "zeroHomes");
+                return true;
             }
         }
         return  true;
+    }
+    // reads message from config adds color and sends it to player
+    private static void sendFromConfig(Player user, String path ){
+        user.sendMessage( // send edited message to user
+                ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
+                        Objects.requireNonNull( // check if not null
+                        Supplements.getPlugin().getConfig().getString(path)))); // get message from config
     }
 }
