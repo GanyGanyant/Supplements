@@ -7,9 +7,12 @@ import me.ganyganyant.supplements.commands.Home;
 import me.ganyganyant.supplements.commands.KillYourSelf;
 import me.ganyganyant.supplements.commands.Spawn;
 import me.ganyganyant.supplements.files.HomeData;
+import net.md_5.bungee.api.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public final class Supplements extends JavaPlugin {
 
@@ -55,5 +58,13 @@ public final class Supplements extends JavaPlugin {
 
     public static Supplements getPlugin() {
         return plugin;
+    }
+
+    // reads message from config adds color and sends it to player
+    public static void sendFromConfig(Player user, String path ){
+        user.sendMessage( // send edited message to user
+                ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
+                        Objects.requireNonNull( // check if not null
+                                Supplements.getPlugin().getConfig().getString(path)))); // get message from config
     }
 }

@@ -7,8 +7,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Objects;
+
+import static me.ganyganyant.supplements.Supplements.sendFromConfig;
 
 public class Home implements CommandExecutor {
 
@@ -48,11 +51,45 @@ public class Home implements CommandExecutor {
                     return true;
                 }
                 if (args.length == 0){
+                    if (plugin.getConfig().getInt("homeTime") != 0) {
+                        // sends a message that teleport will be delayed
+                        p.sendMessage(
+                                ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
+                                        Objects.requireNonNull(    // check if not null
+                                                plugin.getConfig().getString("homeWait")   // get message from config
+                                        ).replace("{TIME}", String.valueOf(plugin.getConfig().getInt("homeTime")))));  // changes {TIME} to delay in seconds
+                        // delays the teleport
+                        new BukkitRunnable(){
+                            @Override
+                            public void run() {
+                                p.teleport(player.firstHome());
+                                sendFromConfig(p,"tpHome");
+                            }
+                        }.runTaskLater(plugin, plugin.getConfig().getInt("homeTime") * 20L);
+                        return true;
+                    }
                     p.teleport(player.firstHome());
                     sendFromConfig(p,"tpHome");
                     return true;
                 }
                 if (player.homeByName(args[0]) != null){
+                    if (plugin.getConfig().getInt("homeTime") != 0) {
+                        // sends a message that teleport will be delayed
+                        p.sendMessage(
+                                ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
+                                        Objects.requireNonNull(    // check if not null
+                                                plugin.getConfig().getString("homeWait")   // get message from config
+                                        ).replace("{TIME}", String.valueOf(plugin.getConfig().getInt("homeTime")))));  // changes {TIME} to delay in seconds
+                        // delays the teleport
+                        new BukkitRunnable(){
+                            @Override
+                            public void run() {
+                                p.teleport(player.homeByName(args[0]));
+                                sendFromConfig(p,"tpHome");
+                            }
+                        }.runTaskLater(plugin, plugin.getConfig().getInt("homeTime") * 20L);
+                        return true;
+                    }
                     p.teleport(player.homeByName(args[0]));
                     sendFromConfig(p,"tpHome");
                     return true;
@@ -98,11 +135,5 @@ public class Home implements CommandExecutor {
         }
         return  true;
     }
-    // reads message from config adds color and sends it to player
-    private static void sendFromConfig(Player user, String path ){
-        user.sendMessage( // send edited message to user
-                ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
-                        Objects.requireNonNull( // check if not null
-                        Supplements.getPlugin().getConfig().getString(path)))); // get message from config
-    }
+
 }

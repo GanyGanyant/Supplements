@@ -49,6 +49,11 @@ missingHomeName: "&cUse /sethome <homeName> to set your home."
 # player set home successfully
 homeSet: "&aHome set successfully."
 # home
+# home teleport wait time
+homeTime: 0
+# home wait time message
+homeWait: "&bYou will be teleported in {TIME} seconds."
+# use {TIME} to display the time in seconds.
 # player does not have a home
 noHomes: "&cYou must set your home first."
 # player gets teleported to home
@@ -72,6 +77,11 @@ listHomes: "&aHomes &2({NUM}): &a{LIST}"
 # use {NUM} to display the number of homes and {LIST} to list all home names
 
 # Spawn command messages
+# spawn teleport wait time
+spawnTime: 0
+# spawn wait time message
+spawnWait: "&bYou will be teleported in {TIME} seconds."
+# use {TIME} to display the time in seconds.
 # set spawn command
 setSpawn: "&aSpawn set successfully."
 # teleport to spawn
