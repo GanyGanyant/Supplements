@@ -1,18 +1,18 @@
 # this is config file for the Supplements plugin
 
 # settings for discord command
-# 1st line
-discordLine1: "------------------------------------"
-# regular text on 2nd line
-discordText1: "&3Join our discord server:"
-# clickable text on 2nd line
+# clickable text
 discordLinkText: "&6 CLICK ME"
 # discord url
-discordLinkAddress: "https://discord.gg/"
-# regular text on 2nd line
-discordText2: "&3 <<"
-# last line
-discordLine2: "------------------------------------"
+discordURL: "https://discord.gg/"
+# discord message
+discord: "
+  ------------------------------------\n
+  &3Join our discord server:{LINK} &3<<\n
+  ------------------------------------
+  "
+# use {LINK} to display clickable text (discordLinkText)
+# use \n to create new line
 
 # Join and Leave messages
 # enable different messages for new players
@@ -45,7 +45,7 @@ homes: 1
 # player has reached max number of homes
 maxHomes: "&cYou have reached the max amount of homes!"
 # player sets home without specifying name (doesn't apply for first home)
-missingHomeName: "&cUse /sethome <homeName> to set your home."
+missingHomeName: "&cUse /sethome {homeName} to set your home."
 # player set home successfully
 homeSet: "&aHome set successfully."
 # home
@@ -73,7 +73,7 @@ homeToRemoveNotFound: "&cHome you want to delete does not exist!"
 # player does not have a home
 zeroHomes: "&cYou have no homes."
 # display homes message
-listHomes: "&aHomes &2({NUM}): &a{LIST}"
+listHomes: "Homes ({NUM}): &a{LIST}"
 # use {NUM} to display the number of homes and {LIST} to list all home names
 
 # Spawn command messages

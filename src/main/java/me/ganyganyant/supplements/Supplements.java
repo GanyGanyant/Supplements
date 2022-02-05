@@ -2,10 +2,7 @@ package me.ganyganyant.supplements;
 
 import me.ganyganyant.supplements.Handlers.PlayerJoining;
 import me.ganyganyant.supplements.Handlers.PlayerTeleportSpawn;
-import me.ganyganyant.supplements.commands.Discord;
-import me.ganyganyant.supplements.commands.Home;
-import me.ganyganyant.supplements.commands.KillYourSelf;
-import me.ganyganyant.supplements.commands.Spawn;
+import me.ganyganyant.supplements.commands.*;
 import me.ganyganyant.supplements.files.HomeData;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
