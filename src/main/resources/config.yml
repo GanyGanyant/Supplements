@@ -170,3 +170,4 @@ setSpawn: "&aSpawn set successfully."
 teleportedToSpawn: "&aTeleported to spawn."
 # couldn't teleport to spawn because spawn does not exist
 spawnNotExist: "&cSpawn does not exist!"
+spawn:
