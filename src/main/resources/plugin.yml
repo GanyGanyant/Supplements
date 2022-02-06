@@ -8,25 +8,81 @@ commands:
   kys:
     description: Kill Yourself
     usage: /<command>
+    permission: supplements.kys
   discord:
     description: Discord URL
     usage: /<command>
+    permission: supplements.discord
   setspawn:
     description: Set world spawn.
     usage: /<command>
-    permission: op
+    permission: supplements.setspawn
   spawn:
     description: Teleport to world spawn.
     usage: /<command>
+    permission: supplements.spawn
   sethome:
     description: Set a home.
     usage: /<command> {home name}
+    permission: supplements.home
   home:
     description: Teleport to your home.
     usage: /<command> {home name}
+    permission: supplements.home
   delhome:
     description: Delete your home.
     usage: /<command> {home name}
+    permission: supplements.home
   homes:
     description: Show list of homes.
     usage: /<command>
+    permission: supplements.home
+  tpa:
+    description: Send teleport request to a player.
+    usage: /<command>
+    permission: supplements.tpa
+  tpaccept:
+    description: Accept teleport request.
+    usage: /<command>
+    permission: supplements.tpa
+  tpdeny:
+    description: Deny teleport request.
+    usage: /<command>
+    permission: supplements.tpa
+  tpcancel:
+    description: Cancel pending request.
+    usage: /<command>
+    permission: supplements.tpa
+  tpall:
+    description: Teleport all players to yourself.
+    usage: /<command>
+    permission: supplements.tpall
+  tptoggle:
+    description: Toggle teleport requests.
+    usage: /<command> {Player}
+    permission: supplements.tptoggle
+  back:
+    description: Teleport to previous location.
+    usage: /<command>
+    permission: supplements.back
+permissions:
+  supplements.kys:
+    default: true
+  supplements.discord:
+    default: true
+  supplements.setspawn:
+    default: op
+  supplements.spawn:
+    default: true
+  supplements.home:
+    description: Allows all home commands.
+    default: true
+  supplements.tpa:
+    description: Allows all tpa commands excluding tpall and tptoggle.
+    default: true
+  supplements.tpall:
+    default: op
+  supplements.tptoggle:
+    default: true
+  supplements.back:
+    default: true

@@ -4,6 +4,7 @@ import me.ganyganyant.supplements.Handlers.PlayerJoining;
 import me.ganyganyant.supplements.Handlers.PlayerTeleportSpawn;
 import me.ganyganyant.supplements.commands.*;
 import me.ganyganyant.supplements.files.HomeData;
+import me.ganyganyant.supplements.files.ToggleTP;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,7 @@ public final class Supplements extends JavaPlugin {
         // plugin data
         try {
             HomeData.load();
+            ToggleTP.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,16 +36,30 @@ public final class Supplements extends JavaPlugin {
         // events
         getServer().getPluginManager().registerEvents(new PlayerJoining(),this);
         getServer().getPluginManager().registerEvents(new PlayerTeleportSpawn(),this);
+        getServer().getPluginManager().registerEvents(new Back(),this);
 
-        //commands
+        // commands
+        // misc
         getCommand("kys").setExecutor(new KillYourSelf());
         getCommand("discord").setExecutor(new Discord());
+        // spawn
         getCommand("setspawn").setExecutor(new Spawn());
         getCommand("spawn").setExecutor(new Spawn());
+        // home
         getCommand("home").setExecutor(new Home());
         getCommand("sethome").setExecutor(new Home());
         getCommand("delhome").setExecutor(new Home());
         getCommand("homes").setExecutor(new Home());
+        // tpa
+        getCommand("tpa").setExecutor(new Teleport());
+        getCommand("tpaccept").setExecutor(new Teleport());
+        getCommand("tpdeny").setExecutor(new Teleport());
+        getCommand("tpcancel").setExecutor(new Teleport());
+        getCommand("tpall").setExecutor(new Teleport());
+        getCommand("tptoggle").setExecutor(new Teleport());
+        // back
+        getCommand("back").setExecutor(new Back());
+        // [SPAWN, HOME, TPA]
 
     }
 

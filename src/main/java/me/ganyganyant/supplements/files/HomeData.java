@@ -39,8 +39,8 @@ public class HomeData {
     }
     public static class player {
 
-        public String uuid;
-        public ArrayList<home> homes;
+        private String uuid;
+        private ArrayList<home> homes;
 
         public player(String id){
             uuid = id;

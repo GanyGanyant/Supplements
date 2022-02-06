@@ -12,6 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.Objects;
 
 import static me.ganyganyant.supplements.Supplements.sendFromConfig;
+import static me.ganyganyant.supplements.commands.Back.TP;
 
 public class Spawn implements CommandExecutor {
 
@@ -53,13 +54,13 @@ public class Spawn implements CommandExecutor {
                         new BukkitRunnable(){
                             @Override
                             public void run() {
-                                player.teleport(spawn);
+                                TP(player,spawn);
                                 sendFromConfig(player, "teleportedToSpawn");
                             }
                         }.runTaskLater(plugin, plugin.getConfig().getInt("homeTime") * 20L);
                         return true;
                     }
-                    player.teleport(spawn);
+                    TP(player,spawn);
                     sendFromConfig(player, "teleportedToSpawn");
                 }
             }

@@ -12,6 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.Objects;
 
 import static me.ganyganyant.supplements.Supplements.sendFromConfig;
+import static me.ganyganyant.supplements.commands.Back.TP;
 
 public class Home implements CommandExecutor {
 
@@ -62,13 +63,13 @@ public class Home implements CommandExecutor {
                         new BukkitRunnable(){
                             @Override
                             public void run() {
-                                p.teleport(player.firstHome());
+                                TP(p,player.firstHome());
                                 sendFromConfig(p,"tpHome");
                             }
                         }.runTaskLater(plugin, plugin.getConfig().getInt("homeTime") * 20L);
                         return true;
                     }
-                    p.teleport(player.firstHome());
+                    TP(p,player.firstHome());
                     sendFromConfig(p,"tpHome");
                     return true;
                 }
@@ -84,13 +85,13 @@ public class Home implements CommandExecutor {
                         new BukkitRunnable(){
                             @Override
                             public void run() {
-                                p.teleport(player.homeByName(args[0]));
+                                TP(p,player.homeByName(args[0]));
                                 sendFromConfig(p,"tpHome");
                             }
                         }.runTaskLater(plugin, plugin.getConfig().getInt("homeTime") * 20L);
                         return true;
                     }
-                    p.teleport(player.homeByName(args[0]));
+                    TP(p,player.homeByName(args[0]));
                     sendFromConfig(p,"tpHome");
                     return true;
                 }

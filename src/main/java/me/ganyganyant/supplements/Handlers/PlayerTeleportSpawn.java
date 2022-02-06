@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
+import static me.ganyganyant.supplements.commands.Back.addLastLoc;
+
 public class PlayerTeleportSpawn implements Listener {
 
     Supplements plugin = Supplements.getPlugin();
@@ -20,7 +22,10 @@ public class PlayerTeleportSpawn implements Listener {
         boolean teleportNew = plugin.getConfig().getBoolean("teleportNewPlayers");
         Player player = event.getPlayer();
 
-        if ((teleportNew && !player.hasPlayedBefore() || teleportAll) && spawn != null){
+        if (((teleportNew && !player.hasPlayedBefore()) || teleportAll) && spawn != null){
+            if (player.hasPlayedBefore() && teleportAll) {
+                addLastLoc(player);
+            }
             player.teleport(spawn);
         }
     }

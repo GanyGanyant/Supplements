@@ -9,7 +9,7 @@ discordURL: "https://discord.gg/"
 discord: "
   ------------------------------------\n
   &3Join our discord server:{LINK} &3<<\n
-  ------------------------------------
+  &f------------------------------------
   "
 # use {LINK} to display clickable text (discordLinkText)
 # use \n to create new line
@@ -45,7 +45,7 @@ homes: 1
 # player has reached max number of homes
 maxHomes: "&cYou have reached the max amount of homes!"
 # player sets home without specifying name (doesn't apply for first home)
-missingHomeName: "&cUse /sethome {homeName} to set your home."
+missingHomeName: "&cUse /sethome <homeName> to set your home."
 # player set home successfully
 homeSet: "&aHome set successfully."
 # home
@@ -75,6 +75,88 @@ zeroHomes: "&cYou have no homes."
 # display homes message
 listHomes: "Homes ({NUM}): &a{LIST}"
 # use {NUM} to display the number of homes and {LIST} to list all home names
+
+# tpa config
+# time after which teleport request will cancel (seconds)
+requestSpanTP: 120
+# tp wait time
+tpaTime: 0
+# tp wait time message
+tpaWait: "&bYou will be teleported in {TIME} seconds."
+# use {TIME} to display the time in seconds.
+# player executed command /tpa with 0 arguments
+specifyPlayerTP: "&cUse /tpa <playerName> to teleport to player."
+# player you are trying to teleport to in not online
+playerOfflineTP: "&cPlayer is not online."
+# player tries to teleport to himself
+cannotSelfTP: "&cYou cannot teleport to yourself."
+# player tries to create new teleport request while already having another request pending
+alreadyPendingRequestTP: "&cYou already have a pending request."
+# pending teleport request timed out
+requestTimedOutTP: "&cRequest timed out."
+# request has been sent
+requestSentTP: "&6Teleport request has been sent to &b{PLAYER}"
+# use {PLAYER} to display name of targeted player.
+# tpcancel
+# player canceled his teleport request
+requestCanceledTP: "&6Request canceled successfully."
+# player has no request to cancel
+nothingToCancelTP: "&cYou have no pending requests."
+# tpaccept & tpdeny
+# player accepted teleport request
+requestAcceptedTP: "&aTeleport request accepted."
+# player gets teleported
+teleportingTP: "&bTeleporting..."
+# player denied teleport request
+requestDeniedTP: "&cTeleport request denied."
+# player has no requests to accept or deny
+noRequestsTP: "&cYou don't have any pending requests."
+# your teleport request gets denied
+yourRequestDeniedTP: "&cYour teleport request was denied."
+# target has blocked teleport requests
+playerToggledTP: "&cYou cannot send request to this player."
+# tptoggle
+# player disables all incoming TP requests
+toggleFalse: "&6You have &c&lDISABLED &6incoming teleport requests."
+# player enables all incoming TP requests
+toggleTrue: "&6You have &a&lENABLED &6incoming teleport requests."
+# target player wants to toggle is not online.
+toggleNotOnline: "&cCannot find this player."
+# player tries to toggle himself XD
+cannotToggleSelf: "&c&lAre you stupid?"
+# player disables incoming TP requests from target
+playerToggleFalse: "&6You have &c&lDISABLED &6incoming teleport requests from &b{PLAYER}"
+# use {PLAYER} to display name of targeted player.
+# player enables incoming TP requests from target
+playerToggleTrue: "&6You have &a&lENABLED &6incoming teleport requests from &b{PLAYER}"
+# use {PLAYER} to display name of targeted player.
+
+# back
+# back wait time
+backTime: 0
+# back wait time message
+backWait: "&bYou will be teleported in {TIME} seconds."
+# use {TIME} to display the time in seconds.
+# player gets teleported to previous location.
+backTP: "&aTeleported to previous location."
+# player has no previous location to teleport to.
+noBackTP: "&cYou have no previous location."
+
+# customize the looks of ACCEPT box
+acceptBoxTP: "&a&l[ACCEPT]"
+# customize the looks of DENY box
+denyBoxTP: "&c&l[DENY]"
+# message player will receive when someone sends him a teleport request
+targetMsgTP: "
+&1------------------------------------------\n
+&b{PLAYER} &6has sent you a teleport request.\n
+&l        {ACCEPT}          {DENY}        \n
+&1------------------------------------------
+"
+# use {PLAYER} to display PLAYER name of sender
+# use {ACCEPT} to display ACCEPT Box
+# use {DENY} to display DENY Box
+# use \n to create new line
 
 # Spawn command messages
 # spawn teleport wait time
