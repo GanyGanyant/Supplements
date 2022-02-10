@@ -158,6 +158,19 @@ targetMsgTP: "
 # use {DENY} to display DENY Box
 # use \n to create new line
 
+# allow flight
+flyTrue: "&6Flight has been &a&lEnabled"
+# disable flight
+flyFalse: "&6Flight has been &c&lDisabled"
+# allow god mode
+godTrue: "&6God mode has been &a&lEnabled"
+# disable god mode
+godFalse: "&6God mode has been &c&lDisabled"
+# player gets healed
+healed: "&aYou have been healed"
+# player gets fed
+fed: "&aYou have been fed."
+
 # Spawn command messages
 # spawn teleport wait time
 spawnTime: 0

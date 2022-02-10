@@ -65,6 +65,22 @@ commands:
     description: Teleport to previous location.
     usage: /<command>
     permission: supplements.back
+  fly:
+    description: Toggle flight.
+    usage: /<command>
+    permission: supplements.fly
+  god:
+    description: Toggle Invincibility.
+    usage: /<command>
+    permission: supplements.god
+  heal:
+    description: Heal yourself.
+    usage: /<command>
+    permission: supplements.heal
+  feed:
+    description: Fill your hungerbar.
+    usage: /<command>
+    permission: supplements.feed
 permissions:
   supplements.kys:
     default: true
@@ -86,3 +102,11 @@ permissions:
     default: true
   supplements.back:
     default: true
+  supplements.fly:
+    default: op
+  supplements.god:
+    default: op
+  supplements.heel:
+    default: op
+  supplements.feed:
+    default: op

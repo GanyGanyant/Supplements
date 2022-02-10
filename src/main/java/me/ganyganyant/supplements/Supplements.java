@@ -59,7 +59,11 @@ public final class Supplements extends JavaPlugin {
         getCommand("tptoggle").setExecutor(new Teleport());
         // back
         getCommand("back").setExecutor(new Back());
-        // [SPAWN, HOME, TPA]
+        // VIP lvl commands
+        getCommand("fly").setExecutor(new Fly());
+        getCommand("god").setExecutor(new God());
+        getCommand("heal").setExecutor(new Heal());
+        getCommand("feed").setExecutor(new Feed());
 
     }
 
