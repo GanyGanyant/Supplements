@@ -81,6 +81,10 @@ commands:
     description: Fill your hungerbar.
     usage: /<command>
     permission: supplements.feed
+  vanish:
+    description: Sets you invisible to other players.
+    usage: /<command>
+    permission: supplements.vanish
 permissions:
   supplements.kys:
     default: true
@@ -109,4 +113,6 @@ permissions:
   supplements.heel:
     default: op
   supplements.feed:
+    default: op
+  supplements.vanish:
     default: op

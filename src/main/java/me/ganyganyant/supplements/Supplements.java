@@ -37,6 +37,7 @@ public final class Supplements extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoining(),this);
         getServer().getPluginManager().registerEvents(new PlayerTeleportSpawn(),this);
         getServer().getPluginManager().registerEvents(new Back(),this);
+        getServer().getPluginManager().registerEvents(new Vanish(),this);
 
         // commands
         // misc
@@ -64,6 +65,7 @@ public final class Supplements extends JavaPlugin {
         getCommand("god").setExecutor(new God());
         getCommand("heal").setExecutor(new Heal());
         getCommand("feed").setExecutor(new Feed());
+        getCommand("vanish").setExecutor(new Vanish());
 
     }
 

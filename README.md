@@ -13,6 +13,7 @@ Simple Minecraft spigot plugin with basic features like:
 - God
 - Heal
 - Feed
+- Vanish
 
 ## Permissions
 
@@ -36,3 +37,4 @@ Simple Minecraft spigot plugin with basic features like:
 >supplements.god  
 >supplements.heel  
 >supplements.feed
+>supplements.vanish

@@ -170,6 +170,10 @@ godFalse: "&6God mode has been &c&lDisabled"
 healed: "&aYou have been healed"
 # player gets fed
 fed: "&aYou have been fed."
+# enable vanish
+vanishTrue: "&6You are &a&oInvisible"
+# disable vanish
+vanishFalse: "&6You are &c&oVisible"
 
 # Spawn command messages
 # spawn teleport wait time
