@@ -175,6 +175,14 @@ vanishTrue: "&6You are &a&oInvisible"
 # disable vanish
 vanishFalse: "&6You are &c&oVisible"
 
+# invsee
+# player didn't specify target
+noArgsInvsee: "&cUse /invsee <playerName> to see someones inventory."
+# target is not online
+playerNotOnlineInvsee: "&cPlayer is not online."
+# target cannot be self
+noSelfInvsee: "&cPress &lE"
+
 # Spawn command messages
 # spawn teleport wait time
 spawnTime: 0

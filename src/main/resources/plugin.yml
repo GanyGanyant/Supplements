@@ -85,6 +85,10 @@ commands:
     description: Sets you invisible to other players.
     usage: /<command>
     permission: supplements.vanish
+  invsee:
+    description: Open inventory of player.
+    usage: /<command>
+    permission: supplements.invsee
 permissions:
   supplements.kys:
     default: true
@@ -115,4 +119,6 @@ permissions:
   supplements.feed:
     default: op
   supplements.vanish:
+    default: op
+  supplements.invsee:
     default: op

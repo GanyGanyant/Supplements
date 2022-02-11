@@ -66,6 +66,7 @@ public final class Supplements extends JavaPlugin {
         getCommand("heal").setExecutor(new Heal());
         getCommand("feed").setExecutor(new Feed());
         getCommand("vanish").setExecutor(new Vanish());
+        getCommand("invsee").setExecutor(new Invsee());
 
     }
 

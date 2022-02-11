@@ -14,6 +14,7 @@ Simple Minecraft spigot plugin with basic features like:
 - Heal
 - Feed
 - Vanish
+- Invsee
 
 ## Permissions
 
@@ -36,5 +37,6 @@ Simple Minecraft spigot plugin with basic features like:
 >supplements.fly  
 >supplements.god  
 >supplements.heel  
->supplements.feed
->supplements.vanish
+>supplements.feed  
+>supplements.vanish  
+>supplements.invsee  
