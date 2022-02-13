@@ -158,28 +158,53 @@ targetMsgTP: "
 # use {DENY} to display DENY Box
 # use \n to create new line
 
+# target is not online
+playerNotOnline: "&cPlayer is not online."
+
 # allow flight
 flyTrue: "&6Flight has been &a&lEnabled"
 # disable flight
 flyFalse: "&6Flight has been &c&lDisabled"
+# allow flight for player
+flyTruePlayer: "&6Flight has been &a&lEnabled &6 for {PLAYER}"
+# use {PLAYER} to display name of targeted player.
+# disable flight for player
+flyFalsePlayer: "&6Flight has been &c&lDisabled &6 for {PLAYER}"
+# use {PLAYER} to display name of targeted player.
 # allow god mode
 godTrue: "&6God mode has been &a&lEnabled"
 # disable god mode
 godFalse: "&6God mode has been &c&lDisabled"
-# player gets healed
+# allow god mode for player
+godTruePlayer: "&6God mode has been &a&lEnabled &6 for {PLAYER}"
+# use {PLAYER} to display name of targeted player.
+# disable god mode for Player
+godFalsePlayer: "&6God mode has been &c&lDisabled &6 for {PLAYER}"
+# use {PLAYER} to display name of targeted player.
+# you get healed
 healed: "&aYou have been healed"
-# player gets fed
+# player gets healed
+healedPlayer: "&6{PLAYER}&a has been healed"
+# use {PLAYER} to display name of targeted player.
+# you get fed
 fed: "&aYou have been fed."
+# player gets fed
+fedPlayer: "&6{PLAYER}&a has been fed."
+# use {PLAYER} to display name of targeted player.
 # enable vanish
 vanishTrue: "&6You are &a&oInvisible"
 # disable vanish
 vanishFalse: "&6You are &c&oVisible"
+# enable vanish for player
+vanishTruePlayer: "&6{PLAYER}&6 is &a&oInvisible"
+# use {PLAYER} to display name of targeted player.
+# disable vanish for player
+vanishFalsePlayer: "&6{PLAYER}&6 is &c&oVisible"
+# use {PLAYER} to display name of targeted player.
 
 # invsee
 # player didn't specify target
 noArgsInvsee: "&cUse /invsee <playerName> to see someones inventory."
-# target is not online
-playerNotOnlineInvsee: "&cPlayer is not online."
 # target cannot be self
 noSelfInvsee: "&cPress &lE"
 

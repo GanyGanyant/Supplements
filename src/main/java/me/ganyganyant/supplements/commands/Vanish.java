@@ -34,21 +34,46 @@ public class Vanish implements CommandExecutor, Listener {
 
             Player player = (Player) sender;
 
-            if (invisible.contains(player)) {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    p.showPlayer(plugin, player);
+            if (args.length == 0 || !player.hasPermission("supplements.feed.player")) {
+                if (invisible.contains(player)) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        p.showPlayer(plugin, player);
+                    }
+                    invisible.remove(player);
+                    sendFromConfig(player, "vanishFalse");
+                } else {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        p.hidePlayer(plugin, player);
+                    }
+                    invisible.add(player);
+                    sendFromConfig(player, "vanishTrue");
                 }
-                invisible.remove(player);
-                sendFromConfig(player, "vanishFalse");
-            } else {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    p.hidePlayer(plugin, player);
-                }
-                invisible.add(player);
-                sendFromConfig(player, "vanishTrue");
             }
             return true;
         }
+        if (args.length == 0) { return true; }
+        if (!Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(args[0]))) {
+            sendFromConfig(sender, "playerNotOnline");
+            return true;
+        }
+        Player target = Bukkit.getPlayer(args[0]);
+        assert target != null;
+        if (invisible.contains(target)) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                p.showPlayer(plugin, target);
+            }
+            invisible.remove(target);
+            sendFromConfig(target, "vanishFalse");
+            sendFromConfig(sender, "vanishFalsePlayer", target);
+        } else {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                p.hidePlayer(plugin, target);
+            }
+            invisible.add(target);
+            sendFromConfig(target, "vanishTrue");
+            sendFromConfig(sender, "vanishTruePlayer", target);
+        }
         return true;
+
     }
 }

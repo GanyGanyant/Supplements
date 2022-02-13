@@ -6,6 +6,7 @@ import me.ganyganyant.supplements.commands.*;
 import me.ganyganyant.supplements.files.HomeData;
 import me.ganyganyant.supplements.files.ToggleTP;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -85,6 +86,21 @@ public final class Supplements extends JavaPlugin {
         user.sendMessage( // send edited message to user
                 ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
                         Objects.requireNonNull( // check if not null
-                                Supplements.getPlugin().getConfig().getString(path)))); // get message from config
+                                plugin.getConfig().getString(path)))); // get message from config
+    }
+
+    public static void sendFromConfig(CommandSender user, String path ){
+        user.sendMessage( // send edited message to user
+                ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
+                        Objects.requireNonNull( // check if not null
+                                plugin.getConfig().getString(path)))); // get message from config
+    }
+
+    public static void sendFromConfig(CommandSender user, String path, Player name ){
+        user.sendMessage(
+                ChatColor.translateAlternateColorCodes('&',
+                        Objects.requireNonNull(
+                                plugin.getConfig().getString(path))
+                                .replace("{PLAYER}",name.getDisplayName())));
     }
 }

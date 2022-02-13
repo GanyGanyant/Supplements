@@ -90,6 +90,8 @@ commands:
     usage: /<command>
     permission: supplements.invsee
 permissions:
+  supplements.*:
+    default: op
   supplements.kys:
     default: true
   supplements.discord:
@@ -112,13 +114,23 @@ permissions:
     default: true
   supplements.fly:
     default: op
+  supplements.fly.player:
+    default: op
   supplements.god:
     default: op
-  supplements.heel:
+  supplements.god.player:
+      default: op
+  supplements.heal:
+    default: op
+  supplements.heal.player:
     default: op
   supplements.feed:
     default: op
+  supplements.feed.player:
+    default: op
   supplements.vanish:
+    default: op
+  supplements.vanish.player:
     default: op
   supplements.invsee:
     default: op
