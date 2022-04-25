@@ -83,13 +83,7 @@ public class Teleport implements CommandExecutor {
                                                         plugin.getConfig().getString("tpaWait")   // get message from config
                                                 ).replace("{TIME}", String.valueOf(plugin.getConfig().getInt("tpaTime")))));  // changes {TIME} to delay in seconds
                                 // delays the teleport
-                                new BukkitRunnable(){
-                                    @Override
-                                    public void run() {
-                                        sendFromConfig(requester, "teleportingTP");
-                                        TP(requester, player.getLocation());
-                                    }
-                                }.runTaskLater(plugin, plugin.getConfig().getInt("tpaTime") * 20L);
+                                TP(requester, player.getLocation(), plugin.getConfig().getInt("tpaTime") * 20L, "teleportingTP");
                                 return true;
                             }
                             sendFromConfig(requester, "teleportingTP");

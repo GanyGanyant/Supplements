@@ -158,6 +158,42 @@ targetMsgTP: "
 # use {DENY} to display DENY Box
 # use \n to create new line
 
+# setwarp
+# player sets warp without specifying name
+specifyWarp: "&cUse /setwarp <warpName> to set a warp."
+# player set warp successfully
+warpSet: "&aWarp set successfully."
+# player tries to create a warp with a name that already exists
+warpAlreadyExists: "&cWarp already exists."
+# warp
+# warp teleport wait time
+warpTime: 0
+# warp wait time message
+warpWait: "&bYou will be teleported in {TIME} seconds."
+# use {TIME} to display the time in seconds.
+# player gets teleported to warp.
+tpWarp: "&aSuccessfully teleported to a warp."
+# requested home not found
+warpNotFound: "&cRequested warp could not be found."
+# delwarp
+# warp deleted
+warpRemoved: "&aWarp &cDELETED&a successfully."
+# player did not specify warp he wants to delete
+specifyWarpToRemove: "&cYou have to specify warp to delete!"
+# player tries to delete warp he doesn't own
+cannotRemoveWarp: "&cYou cannot remove this warp."
+# player tried to delete non-existing warp
+warpToRemoveNotFound: "&cWarp you want to delete does not exist!"
+# warps (displays a list of warps)
+# There are no warps set.
+zeroWarps: "&cThere are no warps set."
+# display warps message
+listWarps: "Warps ({NUM}): &a{LIST}"
+# use {NUM} to display the number of homes and {LIST} to list all home names
+
+# cancel teleport on movement
+cancelTPOnMove: true # true or false
+cancelTPMSG: "&cTeleport have been canceled because you have moved."
 # target is not online
 playerNotOnline: "&cPlayer is not online."
 
@@ -220,4 +256,3 @@ setSpawn: "&aSpawn set successfully."
 teleportedToSpawn: "&aTeleported to spawn."
 # couldn't teleport to spawn because spawn does not exist
 spawnNotExist: "&cSpawn does not exist!"
-spawn:

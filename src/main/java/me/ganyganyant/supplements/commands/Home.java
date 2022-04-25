@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Objects;
 
@@ -58,15 +57,11 @@ public class Home implements CommandExecutor {
                                 ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
                                         Objects.requireNonNull(    // check if not null
                                                 plugin.getConfig().getString("homeWait")   // get message from config
-                                        ).replace("{TIME}", String.valueOf(plugin.getConfig().getInt("homeTime")))));  // changes {TIME} to delay in seconds
+                                        ).replace("{TIME}", String.valueOf(plugin.getConfig().getInt("homeTime")))
+                                )
+                        );  // changes {TIME} to delay in seconds
                         // delays the teleport
-                        new BukkitRunnable(){
-                            @Override
-                            public void run() {
-                                TP(p,player.firstHome());
-                                sendFromConfig(p,"tpHome");
-                            }
-                        }.runTaskLater(plugin, plugin.getConfig().getInt("homeTime") * 20L);
+                                TP(p,player.firstHome(), plugin.getConfig().getInt("homeTime") * 20L, "tpHome");
                         return true;
                     }
                     TP(p,player.firstHome());
@@ -80,15 +75,11 @@ public class Home implements CommandExecutor {
                                 ChatColor.translateAlternateColorCodes('&', // changes &color to ChatColor.color
                                         Objects.requireNonNull(    // check if not null
                                                 plugin.getConfig().getString("homeWait")   // get message from config
-                                        ).replace("{TIME}", String.valueOf(plugin.getConfig().getInt("homeTime")))));  // changes {TIME} to delay in seconds
+                                        ).replace("{TIME}", String.valueOf(plugin.getConfig().getInt("homeTime")))
+                                )
+                        );  // changes {TIME} to delay in seconds
                         // delays the teleport
-                        new BukkitRunnable(){
-                            @Override
-                            public void run() {
-                                TP(p,player.homeByName(args[0]));
-                                sendFromConfig(p,"tpHome");
-                            }
-                        }.runTaskLater(plugin, plugin.getConfig().getInt("homeTime") * 20L);
+                        TP(p,player.homeByName(args[0]), plugin.getConfig().getInt("homeTime") * 20L, "tpHome");
                         return true;
                     }
                     TP(p,player.homeByName(args[0]));
@@ -127,7 +118,8 @@ public class Home implements CommandExecutor {
                             Objects.requireNonNull(    // check if not null
                                     plugin.getConfig().getString("listHomes")   // get message from config
                             ).replace("{NUM}", String.valueOf(player.numberOfHomes())  // changes {NUM} string to number of homes
-                            ).replace("{LIST}", player.listHomes())));   // change {LIST} string to list of player homes
+                            ).replace("{LIST}", player.listHomes()))
+                    );   // change {LIST} string to list of player homes
                     return true;
                 }
                 sendFromConfig(p, "zeroHomes");

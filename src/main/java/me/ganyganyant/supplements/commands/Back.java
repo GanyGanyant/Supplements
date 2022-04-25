@@ -12,19 +12,53 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
+import static me.ganyganyant.supplements.Supplements.getPlugin;
 import static me.ganyganyant.supplements.Supplements.sendFromConfig;
 
 public class Back implements CommandExecutor, Listener {
 
+    static Supplements plugin = Supplements.getPlugin();
+
     static HashMap<UUID,Location> lastLocation = new HashMap<>();
 
     public static void TP (Player p, Location loc) {
+        TP(p,loc,null);
+    }
+
+    public static void TP (Player p, Location loc, String message) {
         lastLocation.put(p.getUniqueId(),p.getLocation());
+        plugin.getLogger().info("Teleporting " + p.getName() + " to " + loc.getWorld().getName() + " at " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
         p.teleport(loc);
+        if (message != null) {
+            sendFromConfig(p, message);
+        }
+    }
+
+    public static void TP (Player p, Location loc, Long delay, String message) {
+        int x = (int)Math.floor(p.getLocation().getX());
+        int y = (int)Math.floor(p.getLocation().getY());
+        int z = (int)Math.floor(p.getLocation().getZ());
+        new BukkitRunnable(){
+            @Override
+            public void run() {
+                if (plugin.getConfig().getBoolean("cancelTPOnMove")) {
+                    int x2 = (int)Math.floor(p.getLocation().getX());
+                    int y2 = (int)Math.floor(p.getLocation().getY());
+                    int z2 = (int)Math.floor(p.getLocation().getZ());
+                    if (x != x2 || y != y2 || z != z2) {
+                        sendFromConfig(p, "cancelTPMSG");
+                        cancel();
+                        return;
+                    }
+                }
+                TP(p,loc,message);
+            }
+        }.runTaskLater(plugin, delay);
     }
 
     public static void addLastLoc(Player p, Location loc){
@@ -45,8 +79,6 @@ public class Back implements CommandExecutor, Listener {
         if (sender instanceof Player) {
 
             Player player = (Player) sender;
-
-            Supplements plugin = Supplements.getPlugin();
 
             if (lastLocation.containsKey(player.getUniqueId())) {
                 if (plugin.getConfig().getInt("backTime") != 0) {

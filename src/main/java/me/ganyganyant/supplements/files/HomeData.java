@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeData {
 
@@ -110,6 +111,13 @@ public class HomeData {
                 list.append(home.getName());
             }
             return list.toString();
+        }
+        public List<String> HomesList() {
+            List<String> list = new ArrayList<>();
+            for (HomeData.home home : homes) {
+                list.add(home.getName());
+            }
+            return list;
         }
     }
 

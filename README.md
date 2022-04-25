@@ -15,6 +15,7 @@ Simple Minecraft spigot plugin with basic features like:
 - Feed
 - Vanish
 - Invsee
+- Warp
 
 ## Permissions
 
@@ -28,8 +29,9 @@ Simple Minecraft spigot plugin with basic features like:
 >supplements.tpa  
 >&nbsp;&nbsp;&nbsp;&nbsp; Allows all tpa commands excluding tpall and tptoggle.  
 >supplements.tptoggle  
->supplements.back  
-
+>supplements.back    
+>supplements.warp  
+>supplements.warps  
 ### OP
 
 >supplements.*  
@@ -51,3 +53,7 @@ Simple Minecraft spigot plugin with basic features like:
 >supplements.vanish.player  
 >&nbsp;&nbsp;&nbsp;&nbsp; Allows toggling vanish for other players.  
 >supplements.invsee  
+>supplements.warp.set  
+>supplements.warp.del  
+>supplements.warp.delany  
+> &nbsp;&nbsp;&nbsp;&nbsp; Allows deleting warps player doesn't own.    

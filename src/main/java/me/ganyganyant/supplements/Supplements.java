@@ -5,10 +5,14 @@ import me.ganyganyant.supplements.Handlers.PlayerTeleportSpawn;
 import me.ganyganyant.supplements.commands.*;
 import me.ganyganyant.supplements.files.HomeData;
 import me.ganyganyant.supplements.files.ToggleTP;
+import me.ganyganyant.supplements.files.Warps;
+import me.ganyganyant.supplements.tabComplete.HomeTab;
+import me.ganyganyant.supplements.tabComplete.WarpTab;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -22,17 +26,24 @@ public final class Supplements extends JavaPlugin {
         // Plugin startup logic
         plugin = this;
 
-        // plugin config
-        getConfig().options().copyDefaults();
-        saveDefaultConfig();
-
         // plugin data
-        try {
-            HomeData.load();
-            ToggleTP.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                plugin.getLogger().info("loading data!");
+                // plugin config
+                getConfig().options().copyDefaults();
+                saveDefaultConfig();
+                try {
+                    Spawn.load();
+                    HomeData.load();
+                    ToggleTP.load();
+                    Warps.load();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskLater(this.plugin, 1L);
 
         // events
         getServer().getPluginManager().registerEvents(new PlayerJoining(),this);
@@ -61,6 +72,11 @@ public final class Supplements extends JavaPlugin {
         getCommand("tptoggle").setExecutor(new Teleport());
         // back
         getCommand("back").setExecutor(new Back());
+        // warp
+        getCommand("warp").setExecutor(new Warp());
+        getCommand("setwarp").setExecutor(new Warp());
+        getCommand("delwarp").setExecutor(new Warp());
+        getCommand("warps").setExecutor(new Warp());
         // VIP lvl commands
         getCommand("fly").setExecutor(new Fly());
         getCommand("god").setExecutor(new God());
@@ -69,12 +85,21 @@ public final class Supplements extends JavaPlugin {
         getCommand("vanish").setExecutor(new Vanish());
         getCommand("invsee").setExecutor(new Invsee());
 
+        // TAB complete
+        // home
+        getCommand("home").setTabCompleter(new HomeTab());
+        getCommand("delhome").setTabCompleter(new HomeTab());
+        // warp
+        getCommand("warp").setTabCompleter(new WarpTab());
+        getCommand("delwarp").setTabCompleter(new WarpTab());
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         HomeData.save();
+        ToggleTP.save();
+        Warps.save();
     }
 
     public static Supplements getPlugin() {

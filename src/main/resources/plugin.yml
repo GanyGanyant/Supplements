@@ -89,6 +89,22 @@ commands:
     description: Open inventory of player.
     usage: /<command>
     permission: supplements.invsee
+  warp:
+    description: Warp to a location.
+    usage: /<command> {warp name}
+    permission: supplements.warp
+  setwarp:
+    description: Create a warp.
+    usage: /<command> {warp name}
+    permission: supplements.warp.set
+  delwarp:
+    description: Delete a warp.
+    usage: /<command> {warp name}
+    permission: supplements.warp.del
+  warps:
+    description: Show list of warps.
+    usage: /<command>
+    permission: supplements.warp
 permissions:
   supplements.*:
     default: op
@@ -119,7 +135,7 @@ permissions:
   supplements.god:
     default: op
   supplements.god.player:
-      default: op
+    default: op
   supplements.heal:
     default: op
   supplements.heal.player:
@@ -133,4 +149,14 @@ permissions:
   supplements.vanish.player:
     default: op
   supplements.invsee:
+    default: op
+  supplements.warp:
+    default: true
+  supplements.warp.set:
+    default: op
+  supplements.warp.del:
+    default: op
+  supplements.warps:
+    default: true
+  supplements.warp.delany:
     default: op
