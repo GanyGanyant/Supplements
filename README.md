@@ -16,6 +16,7 @@ Simple Minecraft spigot plugin with basic features like:
 - Vanish
 - Invsee
 - Warp
+- Teleporting with mounted entities
 
 ## Permissions
 
@@ -36,7 +37,9 @@ Simple Minecraft spigot plugin with basic features like:
 
 >supplements.*  
 >supplements.setspawn   
->supplements.tpall  
+>supplements.tpall 
+>supplements.passengerTp 
+>&nbsp;&nbsp;&nbsp;&nbsp; Allows to teleport mounted entity with all of its passengers even if not controlling the entity  
 >supplements.fly  
 >supplements.fly.player   
 >&nbsp;&nbsp;&nbsp;&nbsp; Allows toggling tpa for other players.  

@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,9 +14,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 import static me.ganyganyant.supplements.Supplements.getPlugin;
 import static me.ganyganyant.supplements.Supplements.sendFromConfig;
@@ -26,20 +25,56 @@ public class Back implements CommandExecutor, Listener {
 
     static HashMap<UUID,Location> lastLocation = new HashMap<>();
 
-    public static void TP (Player p, Location loc) {
+    public static void TP (Entity p, Location loc) {
         TP(p,loc,null);
     }
 
-    public static void TP (Player p, Location loc, String message) {
-        lastLocation.put(p.getUniqueId(),p.getLocation());
+    public static void TP (Entity p, Location loc, String message) {
         plugin.getLogger().info("Teleporting " + p.getName() + " to " + loc.getWorld().getName() + " at " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
-        p.teleport(loc);
-        if (message != null) {
+        if (p.isInsideVehicle()){
+            Entity vehicle = p.getVehicle();
+            List<Entity> pass =  vehicle.getPassengers();
+            if (pass.get(0) != p && !p.hasPermission("supplements.passengerTp")) {
+                if (p instanceof Player) {
+                    lastLocation.put(p.getUniqueId(), p.getLocation());
+                }
+                p.teleport(loc);
+                if (message != null && p instanceof Player) {
+                    sendFromConfig(p, message);
+            }
+            return;
+            }
+            vehicle.eject();
+            TP(vehicle, loc);
+
+//            for (Entity passenger : pass );
+//                vehicle.addPassenger(passenger);
+//            }
+
+            new BukkitRunnable(){
+                @Override
+                public void run() {
+                    for (Entity passenger : pass ) {
+                        if (p instanceof Player) {
+                            lastLocation.put(p.getUniqueId(), p.getLocation());
+                        }
+                        vehicle.addPassenger(passenger);
+                    }
+                }
+            }.runTaskLater(plugin, 20L);
+
+        } else {
+            if (p instanceof Player) {
+                lastLocation.put(p.getUniqueId(), p.getLocation());
+            }
+            p.teleport(loc);
+        }
+        if (message != null && p instanceof Player) {
             sendFromConfig(p, message);
         }
     }
 
-    public static void TP (Player p, Location loc, Long delay, String message) {
+    public static void TP (Entity p, Location loc, Long delay, String message) {
         int x = (int)Math.floor(p.getLocation().getX());
         int y = (int)Math.floor(p.getLocation().getY());
         int z = (int)Math.floor(p.getLocation().getZ());

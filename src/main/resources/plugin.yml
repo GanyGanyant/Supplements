@@ -124,6 +124,8 @@ permissions:
     default: true
   supplements.tpall:
     default: op
+  supplements.passengerTp:
+    default: op
   supplements.tptoggle:
     default: true
   supplements.back:
