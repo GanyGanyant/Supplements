@@ -105,6 +105,10 @@ commands:
     description: Show list of warps.
     usage: /<command>
     permission: supplements.warp
+  fix:
+    description: Repair item in main hand.
+    usage: /<command>
+    permission: supplements.fix
 permissions:
   supplements.*:
     default: op
@@ -161,4 +165,6 @@ permissions:
   supplements.warps:
     default: true
   supplements.warp.delany:
+    default: op
+  supplements.fix:
     default: op

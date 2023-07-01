@@ -84,6 +84,7 @@ public final class Supplements extends JavaPlugin {
         getCommand("feed").setExecutor(new Feed());
         getCommand("vanish").setExecutor(new Vanish());
         getCommand("invsee").setExecutor(new Invsee());
+        getCommand("fix").setExecutor(new Fix());
 
         // TAB complete
         // home

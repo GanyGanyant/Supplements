@@ -16,6 +16,7 @@ Simple Minecraft spigot plugin with basic features like:
 - Vanish
 - Invsee
 - Warp
+- Fix
 - Teleporting with mounted entities
 
 ## Permissions
@@ -59,4 +60,7 @@ Simple Minecraft spigot plugin with basic features like:
 >supplements.warp.set  
 >supplements.warp.del  
 >supplements.warp.delany  
-> &nbsp;&nbsp;&nbsp;&nbsp; Allows deleting warps player doesn't own.    
+>&nbsp;&nbsp;&nbsp;&nbsp; Allows deleting warps player doesn't own.    
+>supplements.fix  
+>&nbsp;&nbsp;&nbsp;&nbsp; Repair item in main hand.
+> 
