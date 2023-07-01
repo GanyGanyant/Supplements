@@ -16,19 +16,6 @@ public class Fly implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            if (player.getAllowFlight()) {
-                player.setAllowFlight(false);
-                sendFromConfig(player, "flyFalse");
-            } else {
-                player.setAllowFlight(true);
-                sendFromConfig(player, "flyTrue");
-            }
-            return true;
-        }
-        if (sender instanceof Player) {
-
-            Player player = (Player) sender;
-
             if (args.length == 0 || !player.hasPermission("supplements.fly.player")){
                 if (player.getAllowFlight()) {
                     player.setAllowFlight(false);
