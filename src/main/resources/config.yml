@@ -259,6 +259,10 @@ spawnNotExist: "&cSpawn does not exist!"
 
 # fix
 # item repaired
-repaired: "&6Item has been repaired."
+repaired: "&aItem has been repaired."
 # cannot be fixed (item does not take damage)
 cannotRepair: "&cYou cannot repair this item."
+
+# milk
+# removed all effects
+clearedEffects: "&aEvery effect has been removed."

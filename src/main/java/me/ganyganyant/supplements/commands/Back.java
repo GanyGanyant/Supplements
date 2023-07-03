@@ -16,6 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.*;
 
+import static me.ganyganyant.supplements.Handlers.PlayerLeash.TPleashed;
 import static me.ganyganyant.supplements.Supplements.getPlugin;
 import static me.ganyganyant.supplements.Supplements.sendFromConfig;
 
@@ -36,13 +37,14 @@ public class Back implements CommandExecutor, Listener {
             List<Entity> pass =  vehicle.getPassengers();
             if (pass.get(0) != p && !p.hasPermission("supplements.passengerTp")) {
                 if (p instanceof Player) {
-                    lastLocation.put(p.getUniqueId(), p.getLocation());
+                    addLastLoc((Player) p);
                 }
                 p.teleport(loc);
+                TPleashed(p.getUniqueId(), loc);
                 if (message != null && p instanceof Player) {
                     sendFromConfig(p, message);
-            }
-            return;
+                }
+                return;
             }
             vehicle.eject();
             TP(vehicle, loc);
@@ -55,8 +57,9 @@ public class Back implements CommandExecutor, Listener {
                 @Override
                 public void run() {
                     for (Entity passenger : pass ) {
-                        if (p instanceof Player) {
-                            lastLocation.put(p.getUniqueId(), p.getLocation());
+                        if (passenger instanceof Player) {
+                            addLastLoc((Player) passenger);
+                            TPleashed(passenger.getUniqueId(), loc);
                         }
                         vehicle.addPassenger(passenger);
                     }
@@ -65,9 +68,10 @@ public class Back implements CommandExecutor, Listener {
 
         } else {
             if (p instanceof Player) {
-                lastLocation.put(p.getUniqueId(), p.getLocation());
+                addLastLoc((Player) p);
             }
             p.teleport(loc);
+            TPleashed(p.getUniqueId(), loc);
         }
         if (message != null && p instanceof Player) {
             sendFromConfig(p, message);

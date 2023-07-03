@@ -17,7 +17,9 @@ Simple Minecraft spigot plugin with basic features like:
 - Invsee
 - Warp
 - Fix
-- Teleporting with mounted entities
+- Fixall
+- Milk (remove all effects)
+- Teleporting with mounted entities (boats ,horses, ...) and with leached entittes
 
 ## Permissions
 
@@ -62,5 +64,8 @@ Simple Minecraft spigot plugin with basic features like:
 >supplements.warp.delany  
 >&nbsp;&nbsp;&nbsp;&nbsp; Allows deleting warps player doesn't own.    
 >supplements.fix  
->&nbsp;&nbsp;&nbsp;&nbsp; Repair item in main hand.
-> 
+>&nbsp;&nbsp;&nbsp;&nbsp; Repair item in main hand.  
+>supplements.fixall:  
+>&nbsp;&nbsp;&nbsp;&nbsp; Repair all items in inventory.  
+>supplements.milk:  
+>&nbsp;&nbsp;&nbsp;&nbsp; Remove all effects.

@@ -1,6 +1,7 @@
 package me.ganyganyant.supplements;
 
 import me.ganyganyant.supplements.Handlers.PlayerJoining;
+import me.ganyganyant.supplements.Handlers.PlayerLeash;
 import me.ganyganyant.supplements.Handlers.PlayerTeleportSpawn;
 import me.ganyganyant.supplements.commands.*;
 import me.ganyganyant.supplements.files.HomeData;
@@ -50,6 +51,7 @@ public final class Supplements extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerTeleportSpawn(),this);
         getServer().getPluginManager().registerEvents(new Back(),this);
         getServer().getPluginManager().registerEvents(new Vanish(),this);
+        getServer().getPluginManager().registerEvents(new PlayerLeash(), this);
 
         // commands
         // misc
@@ -85,6 +87,8 @@ public final class Supplements extends JavaPlugin {
         getCommand("vanish").setExecutor(new Vanish());
         getCommand("invsee").setExecutor(new Invsee());
         getCommand("fix").setExecutor(new Fix());
+        getCommand("fixall").setExecutor(new Fix());
+        getCommand("milk").setExecutor(new Milk());
 
         // TAB complete
         // home

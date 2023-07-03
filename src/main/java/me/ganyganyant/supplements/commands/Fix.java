@@ -16,18 +16,34 @@ public class Fix implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-
             Player player = (Player) sender;
-            ItemStack item = player.getInventory().getItemInMainHand();
-            ItemMeta meta = item.getItemMeta();
-            if (meta instanceof Damageable && ((Damageable) meta).hasDamage()) {
-                ((Damageable) meta).setDamage(0);
-                item.setItemMeta(meta);
+            boolean repaired = false;
+            if (command.getName().equalsIgnoreCase("fix")) {
+                ItemStack item = player.getInventory().getItemInMainHand();
+                repaired = fixItem(item);
+            } else if (command.getName().equalsIgnoreCase("fixall")) {
+                for (ItemStack item : player.getInventory().getContents()) {
+                    repaired |= fixItem(item);
+                }
+            }
+            if (repaired) {
                 sendFromConfig(player, "repaired");
             } else {
                 sendFromConfig(player, "cannotRepair");
             }
         }
         return true;
+    }
+
+    public boolean fixItem(ItemStack item) {
+        if (item == null) {return false;}
+        ItemMeta meta = item.getItemMeta();
+        if (meta instanceof Damageable && ((Damageable) meta).hasDamage()) {
+            ((Damageable) meta).setDamage(0);
+            item.setItemMeta(meta);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

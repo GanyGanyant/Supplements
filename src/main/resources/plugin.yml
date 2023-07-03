@@ -109,6 +109,14 @@ commands:
     description: Repair item in main hand.
     usage: /<command>
     permission: supplements.fix
+  fixall:
+    description: Repair all items in inventory.
+    usage: /<command>
+    permission: supplements.fixall
+  milk:
+    description: Removes every effect.
+    usage: /<command>
+    permission: supplements.milk
 permissions:
   supplements.*:
     default: op
@@ -167,4 +175,8 @@ permissions:
   supplements.warp.delany:
     default: op
   supplements.fix:
+    default: op
+  supplements.fixall:
+    default: op
+  supplements.milk:
     default: op
