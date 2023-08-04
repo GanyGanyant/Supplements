@@ -5,6 +5,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerLeashEntityEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerUnleashEntityEvent;
 
 import java.util.HashMap;
@@ -31,6 +32,12 @@ public class PlayerLeash implements Listener {
         UUID playerUUID = event.getPlayer().getUniqueId();
         Entity entity = event.getEntity();
         removeEntity(playerUUID, entity);
+    }
+
+    @EventHandler
+    public void onPlayerDisconnect(PlayerQuitEvent event){
+        UUID playerUUID = event.getPlayer().getUniqueId();
+        leashedEntities.remove(playerUUID);
     }
 
     void addEntity(UUID playerUUID, Entity entity) {

@@ -19,6 +19,7 @@ public class Feed implements CommandExecutor {
 
             if (args.length == 0 || !player.hasPermission("supplements.feed.player")){
                 player.setFoodLevel(20);
+                player.setSaturation(20);
                 sendFromConfig(player, "fed");
                 return true;
             }

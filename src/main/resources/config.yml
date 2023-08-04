@@ -202,20 +202,20 @@ flyTrue: "&6Flight has been &a&lEnabled"
 # disable flight
 flyFalse: "&6Flight has been &c&lDisabled"
 # allow flight for player
-flyTruePlayer: "&6Flight has been &a&lEnabled &6 for{PLAYER}"
+flyTruePlayer: "&6Flight has been &a&lEnabled &6for{PLAYER}"
 # use {PLAYER} to display name of targeted player.
 # disable flight for player
-flyFalsePlayer: "&6Flight has been &c&lDisabled &6 for{PLAYER}"
+flyFalsePlayer: "&6Flight has been &c&lDisabled &6for{PLAYER}"
 # use {PLAYER} to display name of targeted player.
 # allow god mode
 godTrue: "&6God mode has been &a&lEnabled"
 # disable god mode
 godFalse: "&6God mode has been &c&lDisabled"
 # allow god mode for player
-godTruePlayer: "&6God mode has been &a&lEnabled &6for {PLAYER}"
+godTruePlayer: "&6God mode has been &a&lEnabled &6for{PLAYER}"
 # use {PLAYER} to display name of targeted player.
 # disable god mode for Player
-godFalsePlayer: "&6God mode has been &c&lDisabled &6for {PLAYER}"
+godFalsePlayer: "&6God mode has been &c&lDisabled &6for{PLAYER}"
 # use {PLAYER} to display name of targeted player.
 # you get healed
 healed: "&aYou have been healed"
