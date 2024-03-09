@@ -34,7 +34,7 @@ public class Back implements CommandExecutor, Listener {
         plugin.getLogger().info("Teleporting " + p.getName() + " to " + loc.getWorld().getName() + " at " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
         if (p.isInsideVehicle()){
             Entity vehicle = p.getVehicle();
-            List<Entity> pass =  vehicle.getPassengers();
+            List<Entity> pass = vehicle.getPassengers();
             if (pass.get(0) != p && !p.hasPermission("supplements.passengerTp")) {
                 if (p instanceof Player) {
                     addLastLoc((Player) p);
@@ -46,16 +46,15 @@ public class Back implements CommandExecutor, Listener {
                 }
                 return;
             }
-            vehicle.eject();
-            TP(vehicle, loc);
 
-//            for (Entity passenger : pass );
-//                vehicle.addPassenger(passenger);
-//            }
+            loc.getChunk().setForceLoaded(true);
+            vehicle.getLocation().getChunk().setForceLoaded(true);
 
             new BukkitRunnable(){
                 @Override
                 public void run() {
+                    vehicle.eject();
+                    TP(vehicle, loc);
                     for (Entity passenger : pass ) {
                         if (passenger instanceof Player) {
                             addLastLoc((Player) passenger);
@@ -63,8 +62,10 @@ public class Back implements CommandExecutor, Listener {
                         }
                         vehicle.addPassenger(passenger);
                     }
+                    loc.getChunk().setForceLoaded(false);
+                    vehicle.getLocation().getChunk().setForceLoaded(false);
                 }
-            }.runTaskLater(plugin, 20L);
+            }.runTaskLater(plugin, 1L);
 
         } else {
             if (p instanceof Player) {
